@@ -22,6 +22,7 @@ class Solution:
                 else:
                     res.append([a, nums[l], nums[r]])
                     l += 1
+                    # we do this to skip duplicates again, we could have same a and same l pointer
                     while nums[l] == nums[l - 1] and l < r:
                         l += 1
         return res
