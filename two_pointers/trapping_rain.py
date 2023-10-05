@@ -11,10 +11,18 @@ class Solution:
         leftMax, rightMax = height[l], height[r]
         res = 0
         while l < r:
+            # we add to result if leftMax is less than rightMax since leftMax is the bottleneck
+            # we cannot add more water than leftMax can hold, or else it will spill to the left
             if leftMax < rightMax:
                 l += 1
+                # next two line computations:
+                # leftMax will never be negative because only two optiosn can occur
+                # leftMax is the max and we subtract height[l] which will be positive
+                # height[l] is the max and we subtract it by itsself in the res += leftMax - height[l]
+                # same logic in the else statement
                 leftMax = max(leftMax, height[l])
                 res += leftMax - height[l]
+            # vice versa for rightMax, we cannot add more water than rightMax capacity
             else:
                 r -= 1
                 rightMax = max(rightMax, height[r])
