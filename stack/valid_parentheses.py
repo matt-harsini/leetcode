@@ -10,6 +10,8 @@ class Solution:
                 # not the value
                 stack.append(c)
                 continue
+            # if not stack would be true if the string starts with a closing paranthesis
+            # test
             if not stack or stack[-1] != Map[c]:
                 return False
             stack.pop()
