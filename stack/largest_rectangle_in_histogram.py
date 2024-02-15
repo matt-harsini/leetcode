@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
+    def largestRectangleArea(self, heights: List[int]) -> List[int]:
 
         maxArea = 0
         stack = []  # pair: (index, height)
@@ -13,7 +13,6 @@ class Solution:
             # at the top of our stack, we skip the while loop, this is monotonic stack increasing order
             while stack and stack[-1][1] > h:
                 index, height = stack.pop()
-                #
                 maxArea = max(maxArea, height * (i - index))
                 start = index
             # once the while loop condition is no longer true, we append the start index and
@@ -23,7 +22,8 @@ class Solution:
         # so we just take the length of height and subtract the respective index associated with the height
         # because the rectangle can extend all the way to the right
         for i, h in stack:
-            maxArea = max(maxArea, h * (len(heights) - i))
+            currArea = h * (len(heights) - i)
+            maxArea = max(maxArea, currArea)
         return maxArea
 
 

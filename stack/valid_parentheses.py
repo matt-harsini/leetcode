@@ -17,4 +17,4 @@ class Solution:
         return not stack
 
 app = Solution()
-app.isValid("(()")
+app.isValid(")))))")
